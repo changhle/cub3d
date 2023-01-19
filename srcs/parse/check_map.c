@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:26 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/17 10:51:51 by ljeongin         ###   ########.fr       */
+/*   Updated: 2023/01/20 06:12:12 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,14 @@ static void	check_horizontal_line(
 	}
 }
 
+int	set_door(t_coord *coord, size_t x, size_t y)
+{
+	if (coord->maparr[y][x - 1] == WALL && coord->maparr[y][x + 1] == WALL
+		&& coord->maparr[y - 1][x] == FIELD && coord->maparr[y + 1][x] == FIELD)
+		return (TRUE);
+	return (FALSE);
+}
+
 void	check_map(t_coord *coord)
 {
 	size_t	x;
@@ -110,6 +118,8 @@ void	check_map(t_coord *coord)
 		{
 			if (coord->maparr[y][x] & PLAYER)
 				player_cnt++;
+			if (!set_door(coord, x, y))
+				return (error_exit_with_str("map: door parsing error"));
 			x++;
 		}
 		y++;

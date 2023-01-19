@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:17 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/17 10:53:08 by ljeongin         ###   ########.fr       */
+/*   Updated: 2023/01/20 05:41:03 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ enum e_maparr
 	POS_E = 1 << 3,
 	POS_W = 1 << 4,
 	POS_S = 1 << 5,
+	DOOR = 1 << 6,
 	PLAYER = POS_N | POS_E | POS_W | POS_S,
 };
 

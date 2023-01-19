@@ -1,0 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/02 09:12:19 by ljeongin          #+#    #+#             */
+/*   Updated: 2022/11/02 09:12:21 by ljeongin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PARSE_H
+# define PARSE_H
+
+# include <stddef.h>
+
+typedef struct s_game_data	t_game_data;
+typedef struct s_map		t_map;
+typedef struct s_filepath	t_filepath;
+typedef struct s_coord		t_coord;
+
+typedef struct s_buffer		t_buffer;
+
+struct s_buffer
+{
+	char	**buf;
+	size_t	size;
+	size_t	cap;
+};
+
+void	error_exit_with_str(char *str);
+void	perror_exit(char *str);
+
+void	free_strv(char **strv);
+
+void	init_texture(int fd, t_game_data *game_data);
+char	**parse_texture_data(char *line);
+void	get_texture(char **texture_data, t_map *map, t_filepath *filepath);
+
+void	copy_map_from_buf(t_buffer *buffer, t_coord *coord);
+void	check_map(t_coord *coord);
+void	init_map_content(int fd, t_map *map);
+void	init_coord_value(t_coord *coord);
+
+void	init_buffer(t_buffer *buffer);
+void	append_buffer(t_buffer *buffer, char *str);
+void	clear_buffer(t_buffer *buffer);
+
+#endif

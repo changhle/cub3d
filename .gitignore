@@ -1,0 +1,23 @@
+# object files
+*.o
+
+# archive files
+*.a
+
+# dynamic library files
+*.dylib
+
+# dummy file
+.DS_Store
+test.c
+a.out
+
+# vscode
+.vscode
+
+# minilibx
+*.swiftdoc
+*.swiftmodule
+
+# executable name
+cub3d

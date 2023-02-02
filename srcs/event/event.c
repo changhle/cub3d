@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:18:58 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/16 20:13:15 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/03 06:17:23 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "macro.h"
 #include "mlx.h"
 #include <stdlib.h>
+#include <math.h>
 
 int	mlx_loop_hook_event(t_game_data *game_data)
 {
@@ -57,6 +58,8 @@ int	mlx_key_press_event(int keycode, t_game_data *game_data)
 		game_data->engine |= DIR_S;
 	if (keycode == D)
 		game_data->engine |= DIR_D;
+	if (keycode == E)
+		move_door(game_data->map->coord);
 	if (keycode == LEFT)
 		game_data->engine |= ROT_LEFT;
 	if (keycode == RIGHT)

@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:17 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/01/20 05:41:03 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/03 03:12:49 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ struct s_texture
 	t_image	*e;
 	t_image	*w;
 	t_image	*s;
+	t_image	*d;
 	int		floor;
 	int		ceil;
 };
@@ -70,7 +71,8 @@ enum e_wall_dir
 	NORTH_WALL = 0,
 	EAST_WALL,
 	WEST_WALL,
-	SOUTH_WALL
+	SOUTH_WALL,
+	DOOR_WALL
 };
 
 struct s_ray
@@ -108,7 +110,8 @@ enum e_maparr
 	POS_E = 1 << 3,
 	POS_W = 1 << 4,
 	POS_S = 1 << 5,
-	DOOR = 1 << 6,
+	DOOR_C = 1 << 6,
+	DOOR_O = 1 << 7,
 	PLAYER = POS_N | POS_E | POS_W | POS_S,
 };
 
@@ -118,6 +121,7 @@ struct s_filepath
 	char	*e;
 	char	*w;
 	char	*s;
+	char	*d;
 };
 
 #endif

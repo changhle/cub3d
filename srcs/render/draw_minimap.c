@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 09:19:36 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/17 10:53:25 by ljeongin         ###   ########.fr       */
+/*   Created: 2023/02/03 06:36:05 by changhle          #+#    #+#             */
+/*   Updated: 2023/02/03 06:36:08 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ static int	get_minimap_rgb(t_map *map, size_t x, size_t y, size_t magx)
 {
 	if (map->coord->maparr[y / magx][x / magx] == WALL)
 		return (MINI_WALL);
-	if ((y / magx == (size_t)map->coord->pos_y)
+	else if ((y / magx == (size_t)map->coord->pos_y)
 		&& x / magx == (size_t)map->coord->pos_x)
 		return (MINI_PLAYER);
-	if (map->coord->maparr[y / magx][x / magx] == FIELD)
+	else if (map->coord->maparr[y / magx][x / magx] == DOOR_C
+		|| map->coord->maparr[y / magx][x / magx] == DOOR_O)
+		return (MINI_DOOR);
+	else if (map->coord->maparr[y / magx][x / magx] == FIELD)
 		return (MINI_FIELD);
 	else
 		return (MINI_VOID);

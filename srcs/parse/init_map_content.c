@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map_content.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:45 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/02 09:12:46 by ljeongin         ###   ########.fr       */
+/*   Updated: 2023/02/02 02:38:39 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

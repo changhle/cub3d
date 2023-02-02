@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture_data.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:55 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/02 09:12:56 by ljeongin         ###   ########.fr       */
+/*   Updated: 2023/02/02 02:40:45 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static t_bool	is_identifier(char *identifier)
 		|| ft_iseq(identifier, "EA")
 		|| ft_iseq(identifier, "WE")
 		|| ft_iseq(identifier, "SO")
+		|| ft_iseq(identifier, "DO")
 		|| ft_iseq(identifier, "F")
 		|| ft_iseq(identifier, "C"));
 }

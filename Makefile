@@ -6,7 +6,7 @@
 #    By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 09:21:55 by ljeongin          #+#    #+#              #
-#    Updated: 2022/11/16 20:02:11 by changhle         ###   ########.fr        #
+#    Updated: 2023/02/03 06:19:58 by changhle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ RENDER_SRCS		:=	$(addprefix $(RENDER_DIR)/, $(RENDER_SRCS))
 
 EVENT_DIR		:=	event
 EVENT_SRCS		:=	event.c move_engine.c move_mouse.c move_player.c \
-					rotate_sight.c
+					move_door.c rotate_sight.c
 EVENT_SRCS		:=	$(addprefix $(EVENT_DIR)/, $(EVENT_SRCS))
 
 UTIL_DIR		:=	util

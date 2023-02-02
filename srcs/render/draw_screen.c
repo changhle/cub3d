@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_screen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:19:31 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/17 10:53:40 by ljeongin         ###   ########.fr       */
+/*   Updated: 2023/02/03 05:12:16 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "mlx.h"
 
-static void	draw_ceil_floor(t_screen *screen, t_map *map)
+static void	draw_background(t_screen *screen, t_map *map)
 {
 	size_t	x;
 	size_t	y;
@@ -49,8 +49,11 @@ static int	get_pixel_color(t_texture *texture, t_wall_dir wall_dir, t_ray *ray)
 	else if (wall_dir == WEST_WALL)
 		return (texture->w->addr[(texture->w->sizel / (texture->w->bpp / 8))
 				* ray->texture_y + ray->texture_x]);
-	else
+	else if (wall_dir == SOUTH_WALL)
 		return (texture->s->addr[(texture->s->sizel / (texture->s->bpp / 8))
+				* ray->texture_y + ray->texture_x]);
+	else
+		return (texture->d->addr[(texture->d->sizel / (texture->d->bpp / 8))
 				* ray->texture_y + ray->texture_x]);
 }
 
@@ -78,7 +81,7 @@ void	draw_screen(t_game_data *game_data)
 		game_data->mlx->mlx_ptr, game_data->mlx->win_ptr,
 		game_data->mlx->screen->img_ptr, 0, 0
 		);
-	draw_ceil_floor(game_data->mlx->screen, game_data->map);
+	draw_background(game_data->mlx->screen, game_data->map);
 	x = 0;
 	while (x < SCREEN_WIDTH)
 	{

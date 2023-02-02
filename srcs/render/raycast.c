@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:25:14 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/02 09:47:45 by ljeongin         ###   ########.fr       */
+/*   Updated: 2023/02/03 03:20:50 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static void	calculate_sidedist_value(t_coord *coord, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (coord->maparr[ray->map_y][ray->map_x] == WALL)
+		if (coord->maparr[ray->map_y][ray->map_x] == WALL
+			|| coord->maparr[ray->map_y][ray->map_x] == DOOR_C)
 			ray->hit = TRUE;
 	}
 }
@@ -82,7 +83,9 @@ static void	calculate_line_value(t_coord *coord, t_ray *ray)
 
 static void	calculate_texture_value(t_coord *coord, t_ray *ray)
 {
-	if (ray->side && ray->raydir_y > 0)
+	if (ray->side && coord->maparr[ray->map_y][ray->map_x] == DOOR_C)
+		ray->wall_dir = DOOR_WALL;
+	else if (ray->side && ray->raydir_y > 0)
 		ray->wall_dir = NORTH_WALL;
 	else if (!ray->side && ray->raydir_x < 0)
 		ray->wall_dir = EAST_WALL;

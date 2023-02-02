@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:13:06 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/02 09:13:07 by ljeongin         ###   ########.fr       */
+/*   Updated: 2023/02/02 02:40:01 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	init_t_map(t_game_data *game_data)
 	game_data->map->texture->e = ft_malloc(1, sizeof(t_image));
 	game_data->map->texture->w = ft_malloc(1, sizeof(t_image));
 	game_data->map->texture->s = ft_malloc(1, sizeof(t_image));
+	game_data->map->texture->d = ft_malloc(1, sizeof(t_image));
 	game_data->map->coord = ft_malloc(1, sizeof(t_coord));
 }
 

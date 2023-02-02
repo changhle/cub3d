@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:14 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/17 10:53:07 by ljeongin         ###   ########.fr       */
+/*   Updated: 2023/02/03 06:37:02 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 # define MINI_VOID 0xDD000000
 # define MINI_WALL 0x66000000
+# define MINI_DOOR 0x66666666
 # define MINI_FIELD 0x66FFFFFF
 # define MINI_PLAYER 0x66FF6600
 
@@ -38,6 +39,7 @@ struct s_game_data
 {
 	t_map	*map;
 	t_mlx	*mlx;
+	t_ray	*ray;
 	int		engine;
 	int		mouse;
 	int		x;
@@ -78,6 +80,7 @@ enum e_keycode
 	A = 0,
 	S = 1,
 	D = 2,
+	E = 14,
 	UP = 126,
 	DOWN = 125,
 	LEFT = 123,
@@ -122,6 +125,7 @@ void	draw_minimap(t_game_data *game_data, t_minimap *minimap);
 
 int		move_engine(t_game_data *game_data);
 void	move_mouse(t_game_data *game_data);
+void	move_door(t_coord *coord);
 void	rotate_left(t_coord *coord);
 void	rotate_right(t_coord *coord);
 

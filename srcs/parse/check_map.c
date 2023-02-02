@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:26 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/01/20 06:12:12 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/03 03:09:10 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	check_map(t_coord *coord)
 		{
 			if (coord->maparr[y][x] & PLAYER)
 				player_cnt++;
-			if (!set_door(coord, x, y))
+			if (coord->maparr[y][x] & DOOR_C && !set_door(coord, x, y))
 				return (error_exit_with_str("map: door parsing error"));
 			x++;
 		}

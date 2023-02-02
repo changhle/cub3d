@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:31 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/16 17:56:14 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/02 03:10:30 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,7 @@ static void	get_initial_player_pos(t_coord *coord)
 
 static void	get_initial_dir_vec(t_coord *coord)
 {
-	if (coord->maparr[(int)coord->pos_y][(int)coord->pos_x] == POS_N)
-	{
-		coord->dir_x = 0;
-		coord->dir_y = -1;
-	}
-	else if (coord->maparr[(int)coord->pos_y][(int)coord->pos_x] == POS_E)
+	if (coord->maparr[(int)coord->pos_y][(int)coord->pos_x] == POS_E)
 	{
 		coord->dir_x = 1;
 		coord->dir_y = 0;
@@ -56,6 +51,11 @@ static void	get_initial_dir_vec(t_coord *coord)
 	{
 		coord->dir_x = 0;
 		coord->dir_y = 1;
+	}
+	else if (coord->maparr[(int)coord->pos_y][(int)coord->pos_x] == POS_N)
+	{
+		coord->dir_x = 0;
+		coord->dir_y = -1;
 	}
 	coord->maparr[(int)coord->pos_y][(int)coord->pos_x] = FIELD;
 }

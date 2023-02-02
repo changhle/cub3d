@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:28 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/02 09:12:30 by ljeongin         ###   ########.fr       */
+/*   Updated: 2023/02/02 02:44:06 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,13 @@ void	get_texture(char **texture_data, t_map *map, t_filepath *filepath)
 	if (ft_iseq(texture_data[0], "NO"))
 		filepath->n = ft_strdup(texture_data[1]);
 	else if (ft_iseq(texture_data[0], "WE"))
-		filepath->e = ft_strdup(texture_data[1]);
-	else if (ft_iseq(texture_data[0], "EA"))
 		filepath->w = ft_strdup(texture_data[1]);
+	else if (ft_iseq(texture_data[0], "EA"))
+		filepath->e = ft_strdup(texture_data[1]);
 	else if (ft_iseq(texture_data[0], "SO"))
 		filepath->s = ft_strdup(texture_data[1]);
+	else if (ft_iseq(texture_data[0], "DO"))
+		filepath->d = ft_strdup(texture_data[1]);
 	else if (ft_iseq(texture_data[0], "F"))
 		map->texture->floor = get_rgb_data(texture_data[1]);
 	else if (ft_iseq(texture_data[0], "C"))

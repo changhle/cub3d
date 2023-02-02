@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:53 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/17 10:53:14 by ljeongin         ###   ########.fr       */
+/*   Updated: 2023/02/02 02:46:48 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ static void	get_texture_targetfile(t_game_data *game_data, t_filepath *filepath)
 	load_texture_targetfile(
 		game_data->mlx, game_data->map->texture->s, filepath->s
 		);
+	load_texture_targetfile(
+		game_data->mlx, game_data->map->texture->d, filepath->d
+		);
 }
 
 static void	free_filepath(t_filepath *filepath)
@@ -67,6 +70,7 @@ static void	free_filepath(t_filepath *filepath)
 	ft_free((void **)&filepath->e);
 	ft_free((void **)&filepath->w);
 	ft_free((void **)&filepath->s);
+	ft_free((void **)&filepath->d);
 }
 
 void	init_texture(int fd, t_game_data *game_data)
@@ -77,7 +81,7 @@ void	init_texture(int fd, t_game_data *game_data)
 	t_filepath	filepath;
 
 	cnt = 0;
-	while (cnt < 6)
+	while (cnt < 7)
 	{
 		line = get_next_line(fd);
 		if (!line)

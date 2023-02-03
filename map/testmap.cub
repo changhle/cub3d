@@ -1,8 +1,8 @@
-NO ./texture/colorbrick-2-lee.xpm
-SO ./texture/colorbrick-9-gun.xpm
-WE ./texture/colorbrick-0-gon.xpm
-EA ./texture/colorbrick-7-gam.xpm
-DO ./texture/colorbrick-4.xpm
+NO ./texture/colorbrick_0.xpm
+SO ./texture/colorbrick_1.xpm
+WE ./texture/colorbrick_2.xpm
+EA ./texture/colorbrick_3.xpm
+DO ./texture/door_0.xpm
 
 F 143,188,143
 C 135,206,235

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:18:58 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/03 13:30:50 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/03 17:26:51 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	mlx_key_press_event(int keycode, t_game_data *game_data)
 	if (keycode == D)
 		game_data->engine |= DIR_D;
 	if (keycode == E)
-		game_data->door = move_door(game_data->map->coord);
+		move_door(game_data);
 	if (keycode == LEFT)
 		game_data->engine |= ROT_LEFT;
 	if (keycode == RIGHT)

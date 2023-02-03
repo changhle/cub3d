@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:25:14 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/03 03:20:50 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/03 19:06:01 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static void	calculate_sidedist_value(t_coord *coord, t_ray *ray)
 			ray->side = 1;
 		}
 		if (coord->maparr[ray->map_y][ray->map_x] == WALL
-			|| coord->maparr[ray->map_y][ray->map_x] == DOOR_C)
+			|| coord->maparr[ray->map_y][ray->map_x] == DOOR_C
+			|| coord->maparr[ray->map_y][ray->map_x] == SPRITE)
 			ray->hit = TRUE;
 	}
 }
@@ -83,8 +84,10 @@ static void	calculate_line_value(t_coord *coord, t_ray *ray)
 
 static void	calculate_texture_value(t_coord *coord, t_ray *ray)
 {
-	if (ray->side && coord->maparr[ray->map_y][ray->map_x] == DOOR_C)
+	if (coord->maparr[ray->map_y][ray->map_x] == DOOR_C)
 		ray->wall_dir = DOOR_WALL;
+	else if (coord->maparr[ray->map_y][ray->map_x] == SPRITE)
+		ray->wall_dir = SPRITE_WALL;
 	else if (ray->side && ray->raydir_y > 0)
 		ray->wall_dir = NORTH_WALL;
 	else if (!ray->side && ray->raydir_x < 0)

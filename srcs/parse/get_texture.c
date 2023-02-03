@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:28 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/02 02:44:06 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/03 18:28:30 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	get_texture(char **texture_data, t_map *map, t_filepath *filepath)
 		filepath->s = ft_strdup(texture_data[1]);
 	else if (ft_iseq(texture_data[0], "DO"))
 		filepath->d = ft_strdup(texture_data[1]);
+	else if (ft_iseq(texture_data[0], "SP"))
+		filepath->sp = ft_strdup(texture_data[1]);
 	else if (ft_iseq(texture_data[0], "F"))
 		map->texture->floor = get_rgb_data(texture_data[1]);
 	else if (ft_iseq(texture_data[0], "C"))

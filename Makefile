@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: changhle <changhle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 09:21:55 by ljeongin          #+#    #+#              #
-#    Updated: 2023/02/03 06:19:58 by changhle         ###   ########.fr        #
+#    Updated: 2023/02/03 18:43:32 by changhle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ PARSE_DIR		:=	parse
 PARSE_SRCS		:=	parse.c \
 					init_texture.c parse_texture_data.c get_texture.c \
 					init_map_content.c copy_map.c check_map.c t_buffer.c \
-					init_coord_value.c
+					init_coord_value.c check_map_helper.c
 PARSE_SRCS		:=	$(addprefix $(PARSE_DIR)/, $(PARSE_SRCS))
 
 RENDER_DIR		:=	render

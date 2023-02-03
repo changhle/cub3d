@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_screen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:19:31 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/03 05:12:16 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/03 19:08:05 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,11 @@ static int	get_pixel_color(t_texture *texture, t_wall_dir wall_dir, t_ray *ray)
 	else if (wall_dir == SOUTH_WALL)
 		return (texture->s->addr[(texture->s->sizel / (texture->s->bpp / 8))
 				* ray->texture_y + ray->texture_x]);
-	else
+	else if (wall_dir == DOOR_WALL)
 		return (texture->d->addr[(texture->d->sizel / (texture->d->bpp / 8))
+				* ray->texture_y + ray->texture_x]);
+	else
+		return (texture->sp->addr[(texture->sp->sizel / (texture->sp->bpp / 8))
 				* ray->texture_y + ray->texture_x]);
 }
 

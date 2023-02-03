@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:14 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/03 13:29:52 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/04 03:00:12 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define TEXTURE_WIDTH 64
 # define TEXTURE_HEIGHT 64
 
+# define SPRITE_NUM 1
+
 # define MINI_VOID 0xDD000000
 # define MINI_WALL 0x66000000
 # define MINI_DOOR 0x66666666
@@ -31,20 +33,23 @@ typedef struct s_game_data	t_game_data;
 typedef struct s_map		t_map;
 typedef struct s_mlx		t_mlx;
 typedef struct s_coord		t_coord;
+typedef struct s_sprite		t_sprite;
 typedef struct s_ray		t_ray;
 typedef struct s_screen		t_screen;
 typedef struct s_minimap	t_minimap;
 
 struct s_game_data
 {
-	t_map	*map;
-	t_mlx	*mlx;
-	t_ray	*ray;
-	int		engine;
-	int		mouse;
-	int		door;
-	int		x;
-	int		y;
+	t_map		*map;
+	t_mlx		*mlx;
+	t_ray		*ray;
+	t_sprite	*sprite;
+	double		*z_buffer;
+	int			engine;
+	int			mouse;
+	int			door;
+	int			x;
+	int			y;
 };
 
 struct s_mlx
@@ -126,7 +131,7 @@ void	draw_minimap(t_game_data *game_data, t_minimap *minimap);
 
 int		move_engine(t_game_data *game_data);
 void	move_mouse(t_game_data *game_data);
-int		move_door(t_coord *coord);
+void	move_door(t_game_data *game_data);
 void	rotate_left(t_coord *coord);
 void	rotate_right(t_coord *coord);
 

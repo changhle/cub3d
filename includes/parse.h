@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:19 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/02 09:12:21 by ljeongin         ###   ########.fr       */
+/*   Updated: 2023/02/04 02:02:02 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 typedef struct s_game_data	t_game_data;
 typedef struct s_map		t_map;
+typedef enum e_maparr		t_maparr;
 typedef struct s_filepath	t_filepath;
 typedef struct s_coord		t_coord;
 
@@ -40,6 +41,8 @@ void	get_texture(char **texture_data, t_map *map, t_filepath *filepath);
 
 void	copy_map_from_buf(t_buffer *buffer, t_coord *coord);
 void	check_map(t_coord *coord);
+void	check_vertical_line(size_t width, size_t height, t_maparr **maparr);
+void	check_horizontal_line(size_t width, size_t height, t_maparr **maparr);
 void	init_map_content(int fd, t_map *map);
 void	init_coord_value(t_coord *coord);
 

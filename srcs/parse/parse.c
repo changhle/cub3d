@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:13:06 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/03 18:27:15 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/04 02:48:08 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ static int	open_mapfile(const char *filename)
 	return (ret);
 }
 
+static void	init_sprite(t_game_data *game_data)
+{
+	game_data->sprite = ft_malloc(1, sizeof(t_sprite));
+
+	game_data->sprite[0].x = 7.5;
+	game_data->sprite[0].y = 26.5;
+}
+
 void	parse(const char *argv, t_game_data *game_data)
 {
 	const int	map_fd = open_mapfile(argv);
@@ -50,5 +58,6 @@ void	parse(const char *argv, t_game_data *game_data)
 	init_texture(map_fd, game_data);
 	init_map_content(map_fd, game_data->map);
 	ft_close(map_fd);
+	init_sprite(game_data);
 	init_coord_value(game_data->map->coord);
 }

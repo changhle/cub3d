@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_screen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:19:31 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/03 19:08:05 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/04 02:58:04 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,9 @@ static void	draw_line_per_x(t_screen *screen, t_map *map, t_ray *ray, size_t x)
 
 void	draw_screen(t_game_data *game_data)
 {
-	t_ray		ray;
-	int			x;
+	t_ray	ray;
+	int		x;
+	double	z_buffer[SCREEN_WIDTH];
 
 	mlx_put_image_to_window(
 		game_data->mlx->mlx_ptr, game_data->mlx->win_ptr,
@@ -89,6 +90,8 @@ void	draw_screen(t_game_data *game_data)
 	while (x < SCREEN_WIDTH)
 	{
 		raycast(game_data->map->coord, &ray, x);
+		z_buffer[x] = game_data->ray->perp_walldist;
+		sprite_cast();
 		draw_line_per_x(game_data->mlx->screen, game_data->map, &ray, x);
 		x++;
 	}

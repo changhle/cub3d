@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:17 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/03 03:12:49 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/04 03:17:46 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_coord		t_coord;
 typedef enum e_maparr		t_maparr;
 typedef enum e_wall_dir		t_wall_dir;
 typedef struct s_filepath	t_filepath;
+typedef struct s_sprite		t_sprite;
 typedef struct s_ray		t_ray;
 
 struct s_map
@@ -47,6 +48,7 @@ struct s_texture
 	t_image	*w;
 	t_image	*s;
 	t_image	*d;
+	t_image	*sp;
 	int		floor;
 	int		ceil;
 };
@@ -72,7 +74,26 @@ enum e_wall_dir
 	EAST_WALL,
 	WEST_WALL,
 	SOUTH_WALL,
-	DOOR_WALL
+	DOOR_WALL,
+	SPRITE_WALL
+};
+
+struct s_sprite
+{
+	double	x;
+	double	y;
+	double	sprite_x;
+	double	sprite_y;
+	double	inv_det;
+	double	transform_x;
+	double	transform_y;
+	double	sprite_screen_x;
+	double	sprite_height;
+	double	sprite_width;
+	double	draw_start_x;
+	double	draw_start_y;
+	double	draw_end_x;
+	double	draw_end_y;
 };
 
 struct s_ray
@@ -112,6 +133,7 @@ enum e_maparr
 	POS_S = 1 << 5,
 	DOOR_C = 1 << 6,
 	DOOR_O = 1 << 7,
+	SPRITE = 1 << 8,
 	PLAYER = POS_N | POS_E | POS_W | POS_S,
 };
 
@@ -122,6 +144,7 @@ struct s_filepath
 	char	*w;
 	char	*s;
 	char	*d;
+	char	*sp;
 };
 
 #endif

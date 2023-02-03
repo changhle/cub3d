@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:17 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/04 03:17:46 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/04 04:12:07 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,15 @@ struct s_sprite
 	double	inv_det;
 	double	transform_x;
 	double	transform_y;
-	double	sprite_screen_x;
+	int		sprite_screen_x;
 	double	sprite_height;
 	double	sprite_width;
 	double	draw_start_x;
 	double	draw_start_y;
 	double	draw_end_x;
 	double	draw_end_y;
+	int		texture_x;
+	int		texture_y;
 };
 
 struct s_ray

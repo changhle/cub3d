@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:18:58 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/03 06:17:23 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/03 13:30:50 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 
 int	mlx_loop_hook_event(t_game_data *game_data)
 {
-	if (!game_data->engine && game_data->mouse == -1)
+	if (!game_data->engine && game_data->mouse == -1
+		&& game_data->door == FALSE)
 		return (1);
 	else if (game_data->mouse == 1)
 		move_mouse(game_data);
@@ -59,7 +60,7 @@ int	mlx_key_press_event(int keycode, t_game_data *game_data)
 	if (keycode == D)
 		game_data->engine |= DIR_D;
 	if (keycode == E)
-		move_door(game_data->map->coord);
+		game_data->door = move_door(game_data->map->coord);
 	if (keycode == LEFT)
 		game_data->engine |= ROT_LEFT;
 	if (keycode == RIGHT)

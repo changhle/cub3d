@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:14 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/03 06:37:02 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/03 13:29:52 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ struct s_game_data
 	t_ray	*ray;
 	int		engine;
 	int		mouse;
+	int		door;
 	int		x;
 	int		y;
 };
@@ -125,7 +126,7 @@ void	draw_minimap(t_game_data *game_data, t_minimap *minimap);
 
 int		move_engine(t_game_data *game_data);
 void	move_mouse(t_game_data *game_data);
-void	move_door(t_coord *coord);
+int		move_door(t_coord *coord);
 void	rotate_left(t_coord *coord);
 void	rotate_right(t_coord *coord);
 

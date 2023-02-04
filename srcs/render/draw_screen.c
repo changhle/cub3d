@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_screen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:19:31 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/04 21:11:47 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 04:50:48 by younkim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,11 @@ static int	get_pixel_color(t_texture *texture, t_wall_dir wall_dir, t_ray *ray)
 	else if (wall_dir == SOUTH_WALL)
 		return (texture->s->addr[(texture->s->sizel / (texture->s->bpp / 8))
 				* ray->texture_y + ray->texture_x]);
-	else
+	else if (wall_dir == DOOR_WALL)
 		return (texture->d->addr[(texture->d->sizel / (texture->d->bpp / 8))
+				* ray->texture_y + ray->texture_x]);
+	else
+		return (texture->sp->addr[(texture->sp->sizel / (texture->d->bpp / 8))
 				* ray->texture_y + ray->texture_x]);
 }
 
@@ -78,13 +81,15 @@ void	draw_sprite(t_game_data *game_data, t_sprite *sprite, size_t x)
 	t_texture	*texture;
 	t_screen	*screen;
 	size_t		color;
-
+	int vMoveScreen;
+	
+	vMoveScreen = (int)(vMove / sprite->transform_y);
 	texture = game_data->map->texture;
 	screen = game_data->mlx->screen;
 	y = sprite->draw_start_y;
 	while (y < sprite->draw_end_y)
 	{
-		sprite->texture_y = (((y * 256 - SCREEN_HEIGHT * 128
+		sprite->texture_y = ((((y - vMoveScreen) * 256 - SCREEN_HEIGHT * 128
 						+ sprite->sprite_height * 128) * TEXTURE_HEIGHT)
 				/ sprite->sprite_height) / 256;
 		color = texture->sp->addr[(texture->sp->sizel / (texture->sp->bpp / 8))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:14 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/04 17:47:00 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 02:11:31 by younkim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@
 # define MINI_DOOR 0x66666666
 # define MINI_FIELD 0x66FFFFFF
 # define MINI_PLAYER 0x66FF6600
+# define MINI_SPRITE 0x00FFE400
+
+# define uDiv 1
+# define vDiv 1
+# define vMove 0.0
+
 
 typedef struct s_game_data	t_game_data;
 typedef struct s_map		t_map;

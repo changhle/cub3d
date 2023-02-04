@@ -18,6 +18,7 @@ a.out
 # minilibx
 *.swiftdoc
 *.swiftmodule
+*.swiftsourceinfo
 
 # executable name
 cub3d

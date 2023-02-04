@@ -17,6 +17,9 @@ static void	transform_sprite(t_coord *coord, t_sprite *sprite)
 
 static void	calculate_sprite(t_sprite *sprite)
 {
+	int vMoveScreen;
+	
+	vMoveScreen = (int)(vMove / sprite->transform_y);
 	sprite->sprite_width = abs((int)(SCREEN_HEIGHT / sprite->transform_y));
 	sprite->draw_start_x = -sprite->sprite_width / 2 + sprite->sprite_screen_x;
 	if (sprite->draw_start_x < 0)
@@ -24,11 +27,12 @@ static void	calculate_sprite(t_sprite *sprite)
 	sprite->draw_end_x = sprite->sprite_width / 2 + sprite->sprite_screen_x;
 	if (sprite->draw_end_x >= SCREEN_WIDTH)
 		sprite->draw_end_x = SCREEN_WIDTH - 1;
+
 	sprite->sprite_height = abs((int)(SCREEN_HEIGHT / sprite->transform_y));
-	sprite->draw_start_y = -sprite->sprite_height / 2 + SCREEN_HEIGHT / 2;
+	sprite->draw_start_y = -sprite->sprite_height / 2 + SCREEN_HEIGHT / 2 + vMoveScreen;
 	if (sprite->draw_start_y < 0)
 		sprite->draw_start_y = 0;
-	sprite->draw_end_y = sprite->sprite_height / 2 + SCREEN_HEIGHT / 2;
+	sprite->draw_end_y = sprite->sprite_height / 2 + SCREEN_HEIGHT / 2 + vMoveScreen;
 	if (sprite->draw_end_y >= SCREEN_HEIGHT)
 		sprite->draw_end_y = SCREEN_HEIGHT - 1;
 }

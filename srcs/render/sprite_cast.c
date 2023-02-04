@@ -1,7 +1,48 @@
-#include <math.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sprite_cast.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/05 06:57:42 by changhle          #+#    #+#             */
+/*   Updated: 2023/02/05 06:57:43 by changhle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 #include "map.h"
+
+#include <math.h>
+#include <stdlib.h>
+
+static void	sort_sprite(int order[], double distance[])
+{
+	int		i;
+	int		j;
+	int		tmp_int;
+	double	tmp_double;
+
+	i = SPRITE_NUM - 1;
+	while (i > 0)
+	{
+		j = 0;
+		while (j < i)
+		{
+			if (distance[j] < distance[j + 1])
+			{
+				tmp_double = distance[j];
+				distance[j] = distance[j + 1];
+				distance[j + 1] = tmp_double;
+				tmp_int = order[j];
+				order[j] = order[j + 1];
+				order[j + 1] = tmp_int;
+			}
+			j++;
+		}
+		i--;
+	}
+}
 
 static void	transform_sprite(t_coord *coord, t_sprite *sprite)
 {
@@ -66,7 +107,7 @@ void	sprite_cast(t_game_data *game_data, t_coord *coord, t_sprite *sprite,
 			+ pow(coord->pos_y - sprite[i].y, 2);
 		i++;
 	}
-	// sort_sprite();
+	sort_sprite(sprite_order, sprite_distance);
 	i = 0;
 	while (i < SPRITE_NUM)
 	{

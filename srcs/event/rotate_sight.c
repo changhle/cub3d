@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_sight.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 09:17:22 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/02 09:17:23 by ljeongin         ###   ########.fr       */
+/*   Created: 2023/02/05 06:55:23 by changhle          #+#    #+#             */
+/*   Updated: 2023/02/05 06:55:25 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_buffer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 09:13:08 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/02 09:13:11 by ljeongin         ###   ########.fr       */
+/*   Created: 2023/02/05 06:56:46 by changhle          #+#    #+#             */
+/*   Updated: 2023/02/05 06:56:47 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 09:12:14 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/05 06:19:25 by changhle         ###   ########.fr       */
+/*   Created: 2023/02/05 06:53:39 by changhle          #+#    #+#             */
+/*   Updated: 2023/02/05 07:48:24 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CUB3D_H
 
 # include <stddef.h>
-# include <stdio.h>
 
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 960

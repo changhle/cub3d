@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 09:19:48 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/11/17 10:53:42 by ljeongin         ###   ########.fr       */
+/*   Created: 2023/02/05 06:57:21 by changhle          #+#    #+#             */
+/*   Updated: 2023/02/05 06:57:23 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

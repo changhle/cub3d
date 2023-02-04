@@ -6,7 +6,7 @@
 #    By: changhle <changhle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 09:21:55 by ljeongin          #+#    #+#              #
-#    Updated: 2023/02/03 18:43:32 by changhle         ###   ########.fr        #
+#    Updated: 2023/02/04 16:41:52 by changhle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ PARSE_SRCS		:=	$(addprefix $(PARSE_DIR)/, $(PARSE_SRCS))
 
 RENDER_DIR		:=	render
 RENDER_SRCS		:=	init_mlx.c draw_screen.c draw_minimap.c \
-					raycast.c
+					raycast.c sprite_cast.c
 RENDER_SRCS		:=	$(addprefix $(RENDER_DIR)/, $(RENDER_SRCS))
 
 EVENT_DIR		:=	event

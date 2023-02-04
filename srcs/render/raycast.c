@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:25:14 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/03 19:06:01 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/04 16:50:21 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,12 @@ static void	calculate_texture_value(t_coord *coord, t_ray *ray)
 		ray->wall_dir = SPRITE_WALL;
 	else if (ray->side && ray->raydir_y > 0)
 		ray->wall_dir = NORTH_WALL;
+	else if (ray->side && ray->raydir_y < 0)
+		ray->wall_dir = SOUTH_WALL;
 	else if (!ray->side && ray->raydir_x < 0)
 		ray->wall_dir = EAST_WALL;
 	else if (!ray->side && ray->raydir_x > 0)
 		ray->wall_dir = WEST_WALL;
-	else if (ray->side && ray->raydir_y < 0)
-		ray->wall_dir = SOUTH_WALL;
 	if (ray->side)
 		ray->wall_x = coord->pos_x + ray->perp_walldist * ray->raydir_x;
 	else
@@ -134,4 +134,5 @@ void	raycast(t_coord *coord, t_ray *ray, size_t x)
 	calculate_sidedist_value(coord, ray);
 	calculate_line_value(coord, ray);
 	calculate_texture_value(coord, ray);
+	// printf("%lf\n", ray->perp_walldist);
 }

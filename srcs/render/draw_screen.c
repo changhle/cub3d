@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_screen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:19:31 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/04 02:58:04 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/04 16:50:29 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,8 @@ static int	get_pixel_color(t_texture *texture, t_wall_dir wall_dir, t_ray *ray)
 	else if (wall_dir == SOUTH_WALL)
 		return (texture->s->addr[(texture->s->sizel / (texture->s->bpp / 8))
 				* ray->texture_y + ray->texture_x]);
-	else if (wall_dir == DOOR_WALL)
-		return (texture->d->addr[(texture->d->sizel / (texture->d->bpp / 8))
-				* ray->texture_y + ray->texture_x]);
 	else
-		return (texture->sp->addr[(texture->sp->sizel / (texture->sp->bpp / 8))
+		return (texture->d->addr[(texture->d->sizel / (texture->d->bpp / 8))
 				* ray->texture_y + ray->texture_x]);
 }
 
@@ -71,6 +68,27 @@ static void	draw_line_per_x(t_screen *screen, t_map *map, t_ray *ray, size_t x)
 		ray->texture_pos += ray->step;
 		screen->addr[screen->sizel / (screen->bpp / 8) * y + x]
 			= get_pixel_color(map->texture, ray->wall_dir, ray);
+		y++;
+	}
+}
+
+void	draw_sprite(t_game_data *game_data, t_sprite *sprite, size_t x)
+{
+	int			y;
+	t_texture	*texture;
+	t_screen	*screen;
+
+	texture = game_data->map->texture;
+	screen = game_data->mlx->screen;
+	y = sprite->draw_start_y;
+	while (y < sprite->draw_end_y)
+	{
+		sprite->texture_y = (((y * 256 - SCREEN_HEIGHT * 128
+						+ sprite->sprite_height * 128) * TEXTURE_HEIGHT)
+				/ sprite->sprite_height) / 256;
+		screen->addr[screen->sizel / (screen->bpp / 8) * y + x]
+			= texture->sp->addr[(texture->sp->sizel / (texture->sp->bpp / 8))
+			* sprite->texture_y + sprite->texture_x];
 		y++;
 	}
 }
@@ -90,9 +108,13 @@ void	draw_screen(t_game_data *game_data)
 	while (x < SCREEN_WIDTH)
 	{
 		raycast(game_data->map->coord, &ray, x);
-		z_buffer[x] = game_data->ray->perp_walldist;
-		sprite_cast();
 		draw_line_per_x(game_data->mlx->screen, game_data->map, &ray, x);
+		// printf("%lf\n", ray.perp_walldist);
+		// while(1)
+		// {}
+		z_buffer[x] = ray.perp_walldist;
+		sprite_cast(game_data, game_data->map->coord, game_data->sprite, x,
+			z_buffer);
 		x++;
 	}
 }

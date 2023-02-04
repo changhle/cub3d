@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:14 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/04 03:00:12 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/04 17:01:43 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include <stddef.h>
+# include <stdio.h>
 
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 960
@@ -21,7 +22,7 @@
 # define TEXTURE_WIDTH 64
 # define TEXTURE_HEIGHT 64
 
-# define SPRITE_NUM 1
+# define SPRITE_NUM 400
 
 # define MINI_VOID 0xDD000000
 # define MINI_WALL 0x66000000
@@ -126,6 +127,9 @@ int		exit_event(void *game_data);
 **	loop_hook_event
 */
 void	raycast(t_coord *coord, t_ray *ray, size_t x);
+void	sprite_cast(t_game_data *game_data, t_coord *coord, t_sprite *sprite,
+			int x, double z_buffer[]);
+void	draw_sprite(t_game_data *game_data, t_sprite *sprite, size_t x);
 void	draw_screen(t_game_data *game_data);
 void	draw_minimap(t_game_data *game_data, t_minimap *minimap);
 

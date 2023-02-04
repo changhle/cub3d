@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:17 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/04 04:12:07 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/04 16:44:35 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ struct s_sprite
 	double	transform_x;
 	double	transform_y;
 	int		sprite_screen_x;
-	double	sprite_height;
-	double	sprite_width;
+	int		sprite_height;
+	int		sprite_width;
 	double	draw_start_x;
 	double	draw_start_y;
 	double	draw_end_x;

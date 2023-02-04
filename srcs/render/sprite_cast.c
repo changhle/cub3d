@@ -1,17 +1,18 @@
 #include <math.h>
+#include <stdlib.h>
 #include "cub3d.h"
 #include "map.h"
 
 static void	transform_sprite(t_coord *coord, t_sprite *sprite)
 {
 	sprite->inv_det = 1.0 / (coord->plane_x * coord->dir_y
-		- coord->dir_x * coord->plane_y);
+			- coord->dir_x * coord->plane_y);
 	sprite->transform_x = sprite->inv_det * (coord->dir_y * sprite->sprite_x
-		- coord->dir_x * sprite->sprite_y);
+			- coord->dir_x * sprite->sprite_y);
 	sprite->transform_y = sprite->inv_det * (-coord->plane_y * sprite->sprite_x
-		+ coord->plane_x * sprite->sprite_y);
+			+ coord->plane_x * sprite->sprite_y);
 	sprite->sprite_screen_x = (int)((SCREEN_WIDTH / 2)
-		* (1 + sprite->transform_x / sprite->transform_y));
+			* (1 + sprite->transform_x / sprite->transform_y));
 }
 
 static void	calculate_sprite(t_sprite *sprite)
@@ -32,9 +33,26 @@ static void	calculate_sprite(t_sprite *sprite)
 		sprite->draw_end_y = SCREEN_HEIGHT - 1;
 }
 
-static void	stripe_of_sprite(t_coord *coord, t_sprite *sprite)
+static void	stripe_of_sprite(t_game_data *game_data, t_sprite *sprite, size_t x,
+	double z_buffer[])
+{
+	int	stripe;
 
-void	sprite_cast(t_coord *coord, t_sprite *sprite, double z_buffer[])
+	stripe = sprite->draw_start_x;
+	while (stripe < sprite->draw_end_x)
+	{
+		sprite->texture_x = (int)(256 * (stripe - (-sprite->sprite_width / 2
+						+ sprite->sprite_screen_x))
+				* TEXTURE_WIDTH / sprite->sprite_width) / 256;
+		if (sprite->transform_y > 0 && stripe > 0 && stripe < SCREEN_WIDTH
+			&& sprite->transform_y < z_buffer[stripe])
+			draw_sprite(game_data, sprite, x);
+		stripe++;
+	}
+}
+
+void	sprite_cast(t_game_data *game_data, t_coord *coord, t_sprite *sprite,
+	int x, double z_buffer[])
 {
 	int		i;
 	int		sprite_order[SPRITE_NUM];
@@ -55,5 +73,8 @@ void	sprite_cast(t_coord *coord, t_sprite *sprite, double z_buffer[])
 		sprite->sprite_x = sprite[sprite_order[i]].x - coord->pos_x;
 		sprite->sprite_y = sprite[sprite_order[i]].y - coord->pos_y;
 		transform_sprite(coord, sprite);
+		calculate_sprite(sprite);
+		stripe_of_sprite(game_data, sprite, x, z_buffer);
+		i++;
 	}
 }

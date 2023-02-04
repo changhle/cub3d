@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:31 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/02 03:10:30 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 03:56:20 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,17 @@ static void	get_initial_plane_vec(t_coord *coord)
 	if (coord->dir_x)
 	{
 		coord->plane_x = 0;
-		coord->plane_y = 0.66;
+		if (coord->dir_x > 0)
+			coord->plane_y = 0.66;
+		else
+			coord->plane_y = -0.66;
 	}
 	else if (coord->dir_y)
 	{
-		coord->plane_x = 0.66;
+		if (coord->dir_y > 0)
+			coord->plane_x = -0.66;
+		else
+			coord->plane_x = 0.66;
 		coord->plane_y = 0;
 	}
 }

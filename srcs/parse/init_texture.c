@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:53 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/03 18:31:35 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 05:43:22 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,12 @@ static void	get_texture_targetfile(t_game_data *game_data, t_filepath *filepath)
 		game_data->mlx, game_data->map->texture->d, filepath->d
 		);
 	load_texture_targetfile(
-		game_data->mlx, game_data->map->texture->sp, filepath->sp
+		game_data->mlx, game_data->map->texture->s_1, filepath->s_1
 		);
+	load_texture_targetfile(
+		game_data->mlx, game_data->map->texture->s_2, filepath->s_2
+		);
+	game_data->map->texture->sp = game_data->map->texture->s_1;
 }
 
 static void	free_filepath(t_filepath *filepath)
@@ -74,7 +78,8 @@ static void	free_filepath(t_filepath *filepath)
 	ft_free((void **)&filepath->w);
 	ft_free((void **)&filepath->s);
 	ft_free((void **)&filepath->d);
-	ft_free((void **)&filepath->sp);
+	ft_free((void **)&filepath->s_1);
+	ft_free((void **)&filepath->s_2);
 }
 
 void	init_texture(int fd, t_game_data *game_data)
@@ -85,7 +90,7 @@ void	init_texture(int fd, t_game_data *game_data)
 	t_filepath	filepath;
 
 	cnt = 0;
-	while (cnt < 8)
+	while (cnt < 9)
 	{
 		line = get_next_line(fd);
 		if (!line)

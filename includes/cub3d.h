@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:14 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/04 17:47:00 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 06:19:25 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define TEXTURE_WIDTH 64
 # define TEXTURE_HEIGHT 64
 
-# define SPRITE_NUM 400
+# define SPRITE_NUM 50
 
 # define MINI_VOID 0xDD000000
 # define MINI_WALL 0x66000000
@@ -136,6 +136,7 @@ void	draw_minimap(t_game_data *game_data, t_minimap *minimap);
 int		move_engine(t_game_data *game_data);
 void	move_mouse(t_game_data *game_data);
 void	move_door(t_game_data *game_data);
+void	move_sprite(t_game_data *game_data);
 void	rotate_left(t_coord *coord);
 void	rotate_right(t_coord *coord);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:13:06 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/04 21:01:01 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 06:20:07 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 #include "libft.h"
 #include <fcntl.h>
+#include <math.h>
 
 static void	init_t_map(t_game_data *game_data)
 {
@@ -25,7 +26,8 @@ static void	init_t_map(t_game_data *game_data)
 	game_data->map->texture->w = ft_malloc(1, sizeof(t_image));
 	game_data->map->texture->s = ft_malloc(1, sizeof(t_image));
 	game_data->map->texture->d = ft_malloc(1, sizeof(t_image));
-	game_data->map->texture->sp = ft_malloc(1, sizeof(t_image));
+	game_data->map->texture->s_1 = ft_malloc(1, sizeof(t_image));
+	game_data->map->texture->s_2 = ft_malloc(1, sizeof(t_image));
 	game_data->map->coord = ft_malloc(1, sizeof(t_coord));
 }
 
@@ -44,9 +46,16 @@ static int	open_mapfile(const char *filename)
 
 static void	init_sprite(t_game_data *game_data)
 {
+	int	i;
+
 	game_data->sprite = ft_malloc(SPRITE_NUM, sizeof(t_sprite));
-	game_data->sprite[0].x = 10;
-	game_data->sprite[0].y = 10;
+	i = 0;
+	while (i < SPRITE_NUM)
+	{
+		game_data->sprite[i].y = floor((i * 25) / 65) + 0.5;
+		game_data->sprite[i].x = floor((i * 25) % 65) + 0.5;
+		i++;
+	}
 }
 
 void	parse(const char *argv, t_game_data *game_data)

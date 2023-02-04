@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:17 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/04 16:44:35 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 05:33:02 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ struct s_texture
 	t_image	*s;
 	t_image	*d;
 	t_image	*sp;
+	t_image	*s_1;
+	t_image	*s_2;
 	int		floor;
 	int		ceil;
 };
@@ -74,8 +76,7 @@ enum e_wall_dir
 	EAST_WALL,
 	WEST_WALL,
 	SOUTH_WALL,
-	DOOR_WALL,
-	SPRITE_WALL
+	DOOR_WALL
 };
 
 struct s_sprite
@@ -135,7 +136,6 @@ enum e_maparr
 	POS_S = 1 << 5,
 	DOOR_C = 1 << 6,
 	DOOR_O = 1 << 7,
-	SPRITE = 1 << 8,
 	PLAYER = POS_N | POS_E | POS_W | POS_S,
 };
 
@@ -146,7 +146,8 @@ struct s_filepath
 	char	*w;
 	char	*s;
 	char	*d;
-	char	*sp;
+	char	*s_1;
+	char	*s_2;
 };
 
 #endif

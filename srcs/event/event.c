@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:18:58 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/03 17:26:51 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 05:56:10 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	mlx_loop_hook_event(t_game_data *game_data)
 	else if (game_data->mouse == 1)
 		move_mouse(game_data);
 	move_engine(game_data);
+	move_sprite(game_data);
 	draw_screen(game_data);
 	draw_minimap(game_data, game_data->mlx->minimap);
 	return (0);

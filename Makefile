@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: changhle <changhle@student.42.fr>          +#+  +:+       +#+         #
+#    By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 09:21:55 by ljeongin          #+#    #+#              #
-#    Updated: 2023/02/04 16:41:52 by changhle         ###   ########.fr        #
+#    Updated: 2023/02/05 05:56:58 by changhle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ RENDER_SRCS		:=	$(addprefix $(RENDER_DIR)/, $(RENDER_SRCS))
 
 EVENT_DIR		:=	event
 EVENT_SRCS		:=	event.c move_engine.c move_mouse.c move_player.c \
-					move_door.c rotate_sight.c
+					move_door.c move_sprite.c rotate_sight.c
 EVENT_SRCS		:=	$(addprefix $(EVENT_DIR)/, $(EVENT_SRCS))
 
 UTIL_DIR		:=	util

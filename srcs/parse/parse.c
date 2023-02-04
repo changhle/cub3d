@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:13:06 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/04 17:01:27 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:01:01 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,9 @@ static int	open_mapfile(const char *filename)
 
 static void	init_sprite(t_game_data *game_data)
 {
-	int	i, j;
-
 	game_data->sprite = ft_malloc(SPRITE_NUM, sizeof(t_sprite));
-	i = 0;
-	while (i < 20)
-	{
-		j = 0;
-		while (j < 20)
-		{
-			game_data->sprite[i + j].x = i;
-			game_data->sprite[i + j].y = j;
-			j++;
-		}
-		i++;
-	}
+	game_data->sprite[0].x = 10;
+	game_data->sprite[0].y = 10;
 }
 
 void	parse(const char *argv, t_game_data *game_data)

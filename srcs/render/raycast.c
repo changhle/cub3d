@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:25:14 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/04 16:50:21 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:11:52 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,4 @@ void	raycast(t_coord *coord, t_ray *ray, size_t x)
 	calculate_sidedist_value(coord, ray);
 	calculate_line_value(coord, ray);
 	calculate_texture_value(coord, ray);
-	// printf("%lf\n", ray->perp_walldist);
 }

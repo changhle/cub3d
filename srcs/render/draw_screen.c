@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:19:31 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/04 17:46:44 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:11:47 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	draw_sprite(t_game_data *game_data, t_sprite *sprite, size_t x)
 	int			y;
 	t_texture	*texture;
 	t_screen	*screen;
+	size_t		color;
 
 	texture = game_data->map->texture;
 	screen = game_data->mlx->screen;
@@ -86,9 +87,10 @@ void	draw_sprite(t_game_data *game_data, t_sprite *sprite, size_t x)
 		sprite->texture_y = (((y * 256 - SCREEN_HEIGHT * 128
 						+ sprite->sprite_height * 128) * TEXTURE_HEIGHT)
 				/ sprite->sprite_height) / 256;
-		screen->addr[screen->sizel / (screen->bpp / 8) * y + x]
-			= texture->sp->addr[(texture->sp->sizel / (texture->sp->bpp / 8))
+		color = texture->sp->addr[(texture->sp->sizel / (texture->sp->bpp / 8))
 			* sprite->texture_y + sprite->texture_x];
+		if ((color & 0x00FFFFFF) != 0)
+			screen->addr[screen->sizel / (screen->bpp / 8) * y + x] = color;
 		y++;
 	}
 }
@@ -109,9 +111,6 @@ void	draw_screen(t_game_data *game_data)
 	{
 		raycast(game_data->map->coord, &ray, x);
 		draw_line_per_x(game_data->mlx->screen, game_data->map, &ray, x);
-		// printf("%lf\n", ray.perp_walldist);
-		// while(1)
-		// {}
 		z_buffer[x] = ray.perp_walldist;
 		x++;
 	}

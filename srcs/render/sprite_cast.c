@@ -33,7 +33,7 @@ static void	calculate_sprite(t_sprite *sprite)
 		sprite->draw_end_y = SCREEN_HEIGHT - 1;
 }
 
-static void	stripe_of_sprite(t_game_data *game_data, t_sprite *sprite, size_t x,
+static void	stripe_of_sprite(t_game_data *game_data, t_sprite *sprite,
 	double z_buffer[])
 {
 	int	stripe;
@@ -46,13 +46,13 @@ static void	stripe_of_sprite(t_game_data *game_data, t_sprite *sprite, size_t x,
 				* TEXTURE_WIDTH / sprite->sprite_width) / 256;
 		if (sprite->transform_y > 0 && stripe > 0 && stripe < SCREEN_WIDTH
 			&& sprite->transform_y < z_buffer[stripe])
-			draw_sprite(game_data, sprite, x);
+			draw_sprite(game_data, sprite, stripe);
 		stripe++;
 	}
 }
 
 void	sprite_cast(t_game_data *game_data, t_coord *coord, t_sprite *sprite,
-	int x, double z_buffer[])
+	double z_buffer[])
 {
 	int		i;
 	int		sprite_order[SPRITE_NUM];
@@ -74,7 +74,7 @@ void	sprite_cast(t_game_data *game_data, t_coord *coord, t_sprite *sprite,
 		sprite->sprite_y = sprite[sprite_order[i]].y - coord->pos_y;
 		transform_sprite(coord, sprite);
 		calculate_sprite(sprite);
-		stripe_of_sprite(game_data, sprite, x, z_buffer);
+		stripe_of_sprite(game_data, sprite, z_buffer);
 		i++;
 	}
 }

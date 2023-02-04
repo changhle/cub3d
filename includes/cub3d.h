@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:12:14 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/04 17:01:43 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/04 17:47:00 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int		exit_event(void *game_data);
 */
 void	raycast(t_coord *coord, t_ray *ray, size_t x);
 void	sprite_cast(t_game_data *game_data, t_coord *coord, t_sprite *sprite,
-			int x, double z_buffer[]);
+			double z_buffer[]);
 void	draw_sprite(t_game_data *game_data, t_sprite *sprite, size_t x);
 void	draw_screen(t_game_data *game_data);
 void	draw_minimap(t_game_data *game_data, t_minimap *minimap);

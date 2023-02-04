@@ -6,7 +6,7 @@
 /*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:19:31 by ljeongin          #+#    #+#             */
-/*   Updated: 2023/02/04 16:50:29 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/04 17:46:44 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,7 @@ void	draw_screen(t_game_data *game_data)
 		// while(1)
 		// {}
 		z_buffer[x] = ray.perp_walldist;
-		sprite_cast(game_data, game_data->map->coord, game_data->sprite, x,
-			z_buffer);
 		x++;
 	}
+	sprite_cast(game_data, game_data->map->coord, game_data->sprite, z_buffer);
 }

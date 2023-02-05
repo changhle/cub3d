@@ -6,7 +6,7 @@
 /*   By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 06:53:39 by changhle          #+#    #+#             */
-/*   Updated: 2023/02/05 14:19:57 by younkim          ###   ########seoul.kr  */
+/*   Updated: 2023/02/05 16:11:55 by younkim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # define TEXTURE_WIDTH 64
 # define TEXTURE_HEIGHT 64
 
-# define SPRITE_NUM 50
-
 # define MINI_VOID 0xDD000000
 # define MINI_WALL 0x66000000
 # define MINI_DOOR 0x66666666
@@ -30,9 +28,9 @@
 # define MINI_PLAYER 0x66FF6600
 # define MINI_SPRITE 0x00FFE400
 
-# define uDiv 1
-# define vDiv 1
-# define vMove 0.0
+# define U_DIV 2
+# define V_DIV 2
+# define VMOVE 500.0
 
 typedef struct s_game_data	t_game_data;
 typedef struct s_map		t_map;
@@ -133,6 +131,7 @@ int		exit_event(void *game_data);
 void	raycast(t_coord *coord, t_ray *ray, size_t x);
 void	sprite_cast(t_game_data *game_data, t_coord *coord, t_sprite *sprite,
 			double z_buffer[]);
+void	sort_sprite(int order[], double distance[], t_sprite *sprite);
 void	draw_sprite(t_game_data *game_data, t_sprite *sprite, size_t x);
 void	draw_screen(t_game_data *game_data);
 void	draw_minimap(t_game_data *game_data, t_minimap *minimap);

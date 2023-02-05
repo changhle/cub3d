@@ -6,7 +6,7 @@
 #    By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 09:21:55 by ljeongin          #+#    #+#              #
-#    Updated: 2023/02/05 14:17:44 by younkim          ###   ########seoul.kr   #
+#    Updated: 2023/02/05 16:17:40 by younkim          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,12 @@ PARSE_DIR		:=	parse
 PARSE_SRCS		:=	parse.c \
 					init_texture.c parse_texture_data.c get_texture.c \
 					init_map_content.c copy_map.c check_map.c t_buffer.c \
-					init_coord_value.c check_map_helper.c
+					init_coord_value.c check_map_helper.c init_sprite_utils.c
 PARSE_SRCS		:=	$(addprefix $(PARSE_DIR)/, $(PARSE_SRCS))
 
 RENDER_DIR		:=	render
 RENDER_SRCS		:=	init_mlx.c draw_screen.c draw_minimap.c \
-					raycast.c sprite_cast.c
+					raycast.c sprite_cast.c sprite_cast_bubble.c
 RENDER_SRCS		:=	$(addprefix $(RENDER_DIR)/, $(RENDER_SRCS))
 
 EVENT_DIR		:=	event
@@ -75,13 +75,13 @@ $(MINILIBX)		:
 .PHONY			:	clean
 clean			:
 	$(RM) $(OBJS)
-#	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(LIBFT_DIR) clean
 
 .PHONY			:	fclean
 fclean			:	clean
 	$(RM) $(NAME)
-#	$(MAKE) -C $(LIBFT_DIR) fclean
-#	$(MAKE) -C $(MINILIBX_DIR) clean
+	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(MAKE) -C $(MINILIBX_DIR) clean
 	$(RM) $(MINILIBX)
 
 .PHONY			:	re

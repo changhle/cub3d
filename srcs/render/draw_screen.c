@@ -6,7 +6,7 @@
 /*   By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 06:57:14 by changhle          #+#    #+#             */
-/*   Updated: 2023/02/05 14:15:27 by younkim          ###   ########seoul.kr  */
+/*   Updated: 2023/02/05 15:52:26 by younkim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,39 +38,24 @@ static void	draw_background(t_screen *screen, t_map *map)
 	}
 }
 
-// static int	get_pixel_color(t_texture *texture, t_wall_dir wall_dir, t_ray *ray)
-// {
-// 	if (wall_dir == NORTH_WALL)
-// 		return (texture->n->addr[(texture->n->sizel / (texture->n->bpp / 8))
-// 				* ray->texture_y + ray->texture_x]);
-// 	else if (wall_dir == EAST_WALL)
-// 		return (texture->e->addr[(texture->e->sizel / (texture->e->bpp / 8))
-// 				* ray->texture_y + ray->texture_x]);
-// 	else if (wall_dir == WEST_WALL)
-// 		return (texture->w->addr[(texture->w->sizel / (texture->w->bpp / 8))
-// 				* ray->texture_y + ray->texture_x]);
-// 	else if (wall_dir == SOUTH_WALL)
-// 		return (texture->s->addr[(texture->s->sizel / (texture->s->bpp / 8))
-// 				* ray->texture_y + ray->texture_x]);
-// 	else
-// 		return (texture->d->addr[(texture->d->sizel / (texture->d->bpp / 8))
-// 				* ray->texture_y + ray->texture_x]);
-// }
-
-// static void	draw_line_per_x(t_screen *screen, t_map *map, t_ray *ray, size_t x)
-// {
-// 	int	y;
-
-// 	y = ray->start_point;
-// 	while (y < ray->end_point)
-// 	{
-// 		ray->texture_y = (int)ray->texture_pos & (TEXTURE_HEIGHT - 1);
-// 		ray->texture_pos += ray->step;
-// 		screen->addr[screen->sizel / (screen->bpp / 8) * y + x]
-// 			= get_pixel_color(map->texture, ray->wall_dir, ray);
-// 		y++;
-// 	}
-// }
+static int	get_pixel_color(t_texture *texture, t_wall_dir wall_dir, t_ray *ray)
+{
+	if (wall_dir == NORTH_WALL)
+		return (texture->n->addr[(texture->n->sizel / (texture->n->bpp / 8))
+				* ray->texture_y + ray->texture_x]);
+	else if (wall_dir == EAST_WALL)
+		return (texture->e->addr[(texture->e->sizel / (texture->e->bpp / 8))
+				* ray->texture_y + ray->texture_x]);
+	else if (wall_dir == WEST_WALL)
+		return (texture->w->addr[(texture->w->sizel / (texture->w->bpp / 8))
+				* ray->texture_y + ray->texture_x]);
+	else if (wall_dir == SOUTH_WALL)
+		return (texture->s->addr[(texture->s->sizel / (texture->s->bpp / 8))
+				* ray->texture_y + ray->texture_x]);
+	else
+		return (texture->d->addr[(texture->d->sizel / (texture->d->bpp / 8))
+				* ray->texture_y + ray->texture_x]);
+}
 
 static void	draw_line_per_x(t_screen *screen, t_map *map, t_ray *ray, size_t x)
 {
@@ -81,63 +66,30 @@ static void	draw_line_per_x(t_screen *screen, t_map *map, t_ray *ray, size_t x)
 	{
 		ray->texture_y = (int)ray->texture_pos & (TEXTURE_HEIGHT - 1);
 		ray->texture_pos += ray->step;
-		if (ray->wall_dir == NORTH_WALL)
-		screen->addr[screen->sizel / (screen->bpp / 8) * y + x] = (map->texture->n->addr[(map->texture->n->sizel / (map->texture->n->bpp / 8))
-				* ray->texture_y + ray->texture_x]);
-	else if (ray->wall_dir == EAST_WALL)
-		screen->addr[screen->sizel / (screen->bpp / 8) * y + x] = (map->texture->e->addr[(map->texture->e->sizel / (map->texture->e->bpp / 8))
-				* ray->texture_y + ray->texture_x]);
-	else if (ray->wall_dir == WEST_WALL)
-		screen->addr[screen->sizel / (screen->bpp / 8) * y + x] = (map->texture->w->addr[(map->texture->w->sizel / (map->texture->w->bpp / 8))
-				* ray->texture_y + ray->texture_x]);
-	else if (ray->wall_dir == SOUTH_WALL)
-		screen->addr[screen->sizel / (screen->bpp / 8) * y + x] = (map->texture->s->addr[(map->texture->s->sizel / (map->texture->s->bpp / 8))
-				* ray->texture_y + ray->texture_x]);
-	else if (ray->wall_dir == DOOR_WALL)
-		screen->addr[screen->sizel / (screen->bpp / 8) * y + x] = (map->texture->d->addr[(map->texture->d->sizel / (map->texture->d->bpp / 8))
-				* ray->texture_y + ray->texture_x]);
+		if (ray->wall_dir == NORTH_WALL || ray->wall_dir == EAST_WALL || \
+				ray->wall_dir == WEST_WALL || ray->wall_dir == DOOR_WALL || \
+				ray->wall_dir == SOUTH_WALL)
+					screen->addr[screen->sizel / (screen->bpp / 8) * y + x] = \
+						get_pixel_color(map->texture, ray->wall_dir, ray);
 		y++;
 	}
 }
 
-// void	draw_sprite(t_game_data *game_data, t_sprite *sprite, size_t x)
-// {
-// 	int			y;
-// 	t_texture	*texture;
-// 	t_screen	*screen;
-// 	size_t		color;
-
-// 	texture = game_data->map->texture;
-// 	screen = game_data->mlx->screen;
-// 	y = sprite->draw_start_y;
-// 	while (y < sprite->draw_end_y)
-// 	{
-// 		sprite->texture_y = (((y * 256 - SCREEN_HEIGHT * 128
-// 						+ sprite->sprite_height * 128) * TEXTURE_HEIGHT)
-// 				/ sprite->sprite_height) / 256;
-// 		color = texture->sp->addr[(texture->sp->sizel / (texture->sp->bpp / 8))
-// 			* sprite->texture_y + sprite->texture_x];
-// 		if ((color & 0x00FFFFFF) != 0)
-// 			screen->addr[screen->sizel / (screen->bpp / 8) * y + x] = color;
-// 		y++;
-// 	}
-// }
-
 void	draw_sprite(t_game_data *game_data, t_sprite *sprite, size_t x)
 {
-	int			y;
 	t_texture	*texture;
 	t_screen	*screen;
 	size_t		color;
-	int vMoveScreen;
-	
-	vMoveScreen = (int)(vMove / sprite->transform_y);
+	int			y;
+	int			v_move_screen;
+
+	v_move_screen = (int)(VMOVE / sprite->transform_y);
 	texture = game_data->map->texture;
 	screen = game_data->mlx->screen;
 	y = sprite->draw_start_y;
 	while (y < sprite->draw_end_y)
 	{
-		sprite->texture_y = ((((y - vMoveScreen) * 256 - SCREEN_HEIGHT * 128
+		sprite->texture_y = ((((y - v_move_screen) * 256 - SCREEN_HEIGHT * 128
 						+ sprite->sprite_height * 128) * TEXTURE_HEIGHT)
 				/ sprite->sprite_height) / 256;
 		color = texture->sp->addr[(texture->sp->sizel / (texture->sp->bpp / 8))
@@ -147,7 +99,6 @@ void	draw_sprite(t_game_data *game_data, t_sprite *sprite, size_t x)
 		y++;
 	}
 }
-
 
 void	draw_screen(t_game_data *game_data)
 {

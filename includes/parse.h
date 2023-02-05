@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 06:54:13 by changhle          #+#    #+#             */
-/*   Updated: 2023/02/05 06:54:14 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 15:42:32 by younkim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	check_vertical_line(size_t width, size_t height, t_maparr **maparr);
 void	check_horizontal_line(size_t width, size_t height, t_maparr **maparr);
 void	init_map_content(int fd, t_map *map);
 void	init_coord_value(t_coord *coord);
+int		sprite_cnt(t_map *map);
+void	init_sprite_map(t_game_data *game_data);
 
 void	init_buffer(t_buffer *buffer);
 void	append_buffer(t_buffer *buffer, char *str);

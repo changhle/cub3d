@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 06:55:53 by changhle          #+#    #+#             */
-/*   Updated: 2023/02/05 06:55:54 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 15:51:11 by younkim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static t_maparr	get_maparr(char c)
 		return (POS_S);
 	if (c == 'D')
 		return (DOOR_C);
+	if (c == 'A')
+		return (SPRITE);
 	if (c == '\n' || c == ' ' || c == '\0')
 		return (0);
 	error_exit_with_str("mapfile: map: has invalid character");

@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 06:57:06 by changhle          #+#    #+#             */
-/*   Updated: 2023/02/05 06:57:07 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 15:51:18 by younkim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "map.h"
-
 #include "mlx.h"
 
 static int	get_minimap_rgb(t_map *map, size_t x, size_t y, size_t magx)
@@ -25,6 +24,8 @@ static int	get_minimap_rgb(t_map *map, size_t x, size_t y, size_t magx)
 	else if (map->coord->maparr[y / magx][x / magx] == DOOR_C
 		|| map->coord->maparr[y / magx][x / magx] == DOOR_O)
 		return (MINI_DOOR);
+	else if (map->coord->maparr[y / magx][x / magx] == SPRITE)
+		return (MINI_SPRITE);
 	else if (map->coord->maparr[y / magx][x / magx] == FIELD)
 		return (MINI_FIELD);
 	else

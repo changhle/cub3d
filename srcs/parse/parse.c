@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 06:56:40 by changhle          #+#    #+#             */
-/*   Updated: 2023/02/05 06:56:41 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 15:42:01 by younkim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,26 @@ static int	open_mapfile(const char *filename)
 
 static void	init_sprite(t_game_data *game_data)
 {
-	int	i;
+	size_t	sprite_size;
+	int		flag;
+	int		i;
 
-	game_data->sprite = ft_malloc(SPRITE_NUM, sizeof(t_sprite));
-	i = 0;
-	while (i < SPRITE_NUM)
+	sprite_size = sprite_cnt(game_data->map);
+	flag = 0;
+	if (sprite_size == 0)
 	{
-		game_data->sprite[i].y = floor((i * 25) / 65) + 0.5;
-		game_data->sprite[i].x = floor((i * 25) % 65) + 0.5;
-		i++;
+		sprite_size = 1;
+		flag = 1;
 	}
+	game_data->sprite = ft_malloc(sprite_size, sizeof(t_sprite));
+	if (flag)
+	{
+		game_data->sprite->sprite_size = 0;
+		return ;
+	}
+	game_data->sprite->sprite_size = sprite_size;
+	i = 0;
+	init_sprite_map(game_data);
 }
 
 void	parse(const char *argv, t_game_data *game_data)

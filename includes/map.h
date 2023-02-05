@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 06:54:05 by changhle          #+#    #+#             */
-/*   Updated: 2023/02/05 06:54:07 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 14:14:29 by younkim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ struct s_sprite
 	double	draw_end_y;
 	int		texture_x;
 	int		texture_y;
+	size_t		sprite_size;
 };
 
 struct s_ray
@@ -136,6 +137,7 @@ enum e_maparr
 	POS_S = 1 << 5,
 	DOOR_C = 1 << 6,
 	DOOR_O = 1 << 7,
+	SPRITE = 1 << 8,
 	PLAYER = POS_N | POS_E | POS_W | POS_S,
 };
 

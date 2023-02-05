@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: changhle <changhle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/02 09:21:55 by ljeongin          #+#    #+#              #
-#    Updated: 2023/02/05 16:17:40 by younkim          ###   ########seoul.kr   #
+#    Created: 2022/11/02 09:21:55 by changhle          #+#    #+#              #
+#    Updated: 2023/02/05 16:52:09 by changhle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

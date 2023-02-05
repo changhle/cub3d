@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/23 11:43:28 by ljeongin          #+#    #+#             */
-/*   Updated: 2021/10/23 11:43:31 by ljeongin         ###   ########.fr       */
+/*   Created: 2021/10/23 11:43:28 by changhle          #+#    #+#             */
+/*   Updated: 2021/10/23 11:43:31 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

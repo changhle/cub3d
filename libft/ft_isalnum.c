@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/23 11:32:00 by ljeongin          #+#    #+#             */
-/*   Updated: 2021/10/23 11:36:35 by ljeongin         ###   ########.fr       */
+/*   Created: 2021/10/23 11:32:00 by changhle          #+#    #+#             */
+/*   Updated: 2021/10/23 11:36:35 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

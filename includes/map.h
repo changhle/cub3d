@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 06:54:05 by changhle          #+#    #+#             */
-/*   Updated: 2023/02/05 14:14:29 by younkim          ###   ########seoul.kr  */
+/*   Updated: 2023/02/05 16:47:47 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ struct s_sprite
 	double	draw_end_y;
 	int		texture_x;
 	int		texture_y;
-	size_t		sprite_size;
+	size_t	sprite_size;
 };
 
 struct s_ray

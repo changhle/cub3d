@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 06:54:30 by changhle          #+#    #+#             */
-/*   Updated: 2023/02/05 14:23:41 by younkim          ###   ########seoul.kr  */
+/*   Updated: 2023/02/05 16:53:25 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 int	mlx_loop_hook_event(t_game_data *game_data)
 {
 	if (!game_data->engine && game_data->mouse == -1
-		&& game_data->door == FALSE)
+		&& game_data->door == FALSE && !game_data->sprite->sprite_size)
 		return (1);
-	else if (game_data->mouse == 1)
+	if (game_data->mouse == 1)
 		move_mouse(game_data);
 	move_engine(game_data);
 	move_sprite(game_data);
@@ -92,7 +92,6 @@ int	exit_event(void *game_data)
 {
 	(void) game_data;
 	ft_putstr_fd("Bye!\n", STDOUT_FILENO);
-	system("leaks cub3D");
 	exit(EXIT_SUCCESS);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 20:02:12 by ljeongin          #+#    #+#             */
-/*   Updated: 2022/01/10 20:12:58 by ljeongin         ###   ########.fr       */
+/*   Created: 2022/01/10 20:02:12 by changhle          #+#    #+#             */
+/*   Updated: 2023/02/05 16:52:09 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

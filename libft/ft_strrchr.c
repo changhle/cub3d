@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljeongin <ljeongin@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/23 12:03:49 by ljeongin          #+#    #+#             */
-/*   Updated: 2021/10/23 12:03:51 by ljeongin         ###   ########.fr       */
+/*   Created: 2021/10/23 12:03:49 by changhle          #+#    #+#             */
+/*   Updated: 2021/10/23 12:03:51 by changhle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 09:21:55 by ljeongin          #+#    #+#              #
-#    Updated: 2023/02/05 05:56:58 by changhle         ###   ########.fr        #
+#    Updated: 2023/02/05 14:17:44 by younkim          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,13 +75,13 @@ $(MINILIBX)		:
 .PHONY			:	clean
 clean			:
 	$(RM) $(OBJS)
-	$(MAKE) -C $(LIBFT_DIR) clean
+#	$(MAKE) -C $(LIBFT_DIR) clean
 
 .PHONY			:	fclean
 fclean			:	clean
 	$(RM) $(NAME)
-	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(MAKE) -C $(MINILIBX_DIR) clean
+#	$(MAKE) -C $(LIBFT_DIR) fclean
+#	$(MAKE) -C $(MINILIBX_DIR) clean
 	$(RM) $(MINILIBX)
 
 .PHONY			:	re

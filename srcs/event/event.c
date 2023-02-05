@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 06:54:30 by changhle          #+#    #+#             */
-/*   Updated: 2023/02/05 06:54:31 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 14:23:41 by younkim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int	exit_event(void *game_data)
 {
 	(void) game_data;
 	ft_putstr_fd("Bye!\n", STDOUT_FILENO);
+	system("leaks cub3D");
 	exit(EXIT_SUCCESS);
 	return (0);
 }

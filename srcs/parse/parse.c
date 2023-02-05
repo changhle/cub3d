@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changhle <changhle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younkim <younkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 06:56:40 by changhle          #+#    #+#             */
-/*   Updated: 2023/02/05 06:56:41 by changhle         ###   ########.fr       */
+/*   Updated: 2023/02/05 14:12:30 by younkim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,82 @@ static int	open_mapfile(const char *filename)
 	return (ret);
 }
 
+int sprite_cnt(t_map *map)
+{
+	size_t x;
+	size_t y;
+	size_t	ret;
+
+	y = 0;
+	ret = 0;
+	while (y < map->coord->height)
+	{
+		x = 0;
+		while (x < map->coord->width)
+		{
+			if (map->coord->maparr[y][x] == SPRITE)
+				ret++;
+			x++;
+		}
+		y++;
+	}
+	return (ret);
+}
+
 static void	init_sprite(t_game_data *game_data)
 {
-	int	i;
+	size_t	sprite_size;
+	int flag;
+	int i;
+	size_t x;
+	size_t y;
 
-	game_data->sprite = ft_malloc(SPRITE_NUM, sizeof(t_sprite));
-	i = 0;
-	while (i < SPRITE_NUM)
+	y = 0;
+	sprite_size = sprite_cnt(game_data->map);
+	flag = 0;
+	if (sprite_size == 0)
 	{
-		game_data->sprite[i].y = floor((i * 25) / 65) + 0.5;
-		game_data->sprite[i].x = floor((i * 25) % 65) + 0.5;
-		i++;
+		sprite_size = 1;
+		flag = 1;
+	}
+	game_data->sprite = ft_malloc(sprite_size, sizeof(t_sprite));
+	if (flag)
+	{
+		game_data->sprite->sprite_size = 0;
+		return ;
+	}
+	game_data->sprite->sprite_size = sprite_size;
+	i = 0;
+	while (y < game_data->map->coord->height)
+	{
+		x = 0;
+		while (x < game_data->map->coord->width)
+		{
+			if (game_data->map->coord->maparr[y][x] == SPRITE)
+			{
+				game_data->sprite[i].x = x + 0.5;
+				game_data->sprite[i].y = y + 0.5;
+				i++;
+			}
+			x++;
+		}
+		y++;
 	}
 }
+
+// static void	init_sprite(t_game_data *game_data)
+// {
+// 	int	i;
+
+// 	game_data->sprite = ft_malloc(SPRITE_NUM, sizeof(t_sprite));
+// 	i = 0;
+// 	while (i < SPRITE_NUM)
+// 	{
+// 		game_data->sprite[i].y = floor((i * 25) / 65) + 0.5;
+// 		game_data->sprite[i].x = floor((i * 25) % 65) + 0.5;
+// 		i++;
+// 	}
+// }
 
 void	parse(const char *argv, t_game_data *game_data)
 {
